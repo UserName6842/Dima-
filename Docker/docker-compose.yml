@@ -2,11 +2,13 @@ version: "3"
 services:
   db:
     image: mysql:latest
+    ports:
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: 1324
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: diplom
       MYSQL_USER: alexander
-      MYSQL_PASSWORD: 1324
+      MYSQL_PASSWORD: root
     networks:
       - app-network
 
@@ -20,10 +22,10 @@ services:
       - db
     environment:
       PMA_HOST: db
-      DATABASE_URL: "mysql://root:1324@db:3306/diplom"
+      DATABASE_URL: "mysql://root:root@db:3306/diplom"
     command: >
       sh -c "
-        sleep 5;
+        sleep 10;
         npx prisma migrate deploy
         npm run dev
       "
