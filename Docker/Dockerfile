@@ -35,7 +35,7 @@ COPY prisma ./prisma
 COPY . .
 
 # # Выполняем миграции Prisma
-# RUN npx prisma migrate deploy
+RUN npx prisma generate
 
 # Экспонируем порт (если ваше приложение требует порта)
 EXPOSE 3000
